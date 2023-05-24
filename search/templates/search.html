@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            background-color: #222222;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        h1 {
+            color: #ff9900;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        input[type=text] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            width: 50%;
+        }
+        input[type=submit] {
+            background-color: #ff9900;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        .search-results {
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 0 auto;
+            width: 50%;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Engine</h1>
+    <form method="get">
+        <input type="text" name="q" placeholder="Search...">
+        <input type="submit" value="Search">
+    </form>
+    {% if results %}
+        <h2 style="text-align: center; margin-bottom: 30px;">Search Results for "{{ query }}"</h2>
+        <div class="search-results">
+            <ul>
+            {% for document in results %}
+                <li>{{ document }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p style="text-align: center;">No results found.</p>
+    {% endif %}
+</body>
+</html>
